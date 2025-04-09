@@ -33,8 +33,8 @@ CREATE TABLE "Produto"(
 ALTER TABLE
     "Produto" ADD PRIMARY KEY("codigo");
 ALTER TABLE
-    "lote" ADD CONSTRAINT "lote_id_orgaodonatario_foreign" FOREIGN KEY("id_orgaoDonatario") REFERENCES "OrgaoFiscalizador"("id");
+    "lote" ADD CONSTRAINT "lote_id_orgaodonatario_foreign" FOREIGN KEY("id_orgaoDonatario") REFERENCES "OrgaoDonatario"("id");
 ALTER TABLE
-    "lote" ADD CONSTRAINT "lote_id_orgaofiscalizador_foreign" FOREIGN KEY("id_orgaoFiscalizador") REFERENCES "OrgaoDonatario"("id");
+    "lote" ADD CONSTRAINT "lote_id_orgaofiscalizador_foreign" FOREIGN KEY("id_orgaoFiscalizador") REFERENCES "OrgaoFiscalizador"("id");
 ALTER TABLE
     "lote" ADD CONSTRAINT "lote_id_produto_foreign" FOREIGN KEY("id_produto") REFERENCES "Produto"("codigo");
