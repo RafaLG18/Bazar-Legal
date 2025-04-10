@@ -37,4 +37,4 @@ ALTER TABLE
 ALTER TABLE
     "Lote" ADD CONSTRAINT "lote_id_orgaodonatario_foreign" FOREIGN KEY("id_orgaoDonatario") REFERENCES "OrgaoDonatario"("id");
 ALTER TABLE
-    "Produto" ADD CONSTRAINT "produto_id_lote_foreign" FOREIGN KEY("id_lote") REFERENCES "Lote"("id");
+    "Produto" ADD CONSTRAINT "produto_id_lote_foreign" FOREIGN KEY("id_lote") REFERENCES "Lote"("id");  
