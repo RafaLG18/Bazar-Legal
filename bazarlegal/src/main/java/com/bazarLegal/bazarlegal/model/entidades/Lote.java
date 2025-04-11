@@ -8,10 +8,13 @@ public class Lote {
     private int id;
     private Date dataEntrega;
     private String observacao;
-    private int id_orgaoDonatario;
-    private int id_orgaoFiscalizador;
+    
+    private OrgaoDonatario orgaoDonatario;
+    private OrgaoFiscalizador orgaoFiscalizador;
 
-    private List<Produto> produtos;
+    private List<Produto> produtosSelecionados;
+
+    // Manipulação dos próprios atributos
     public int getId() {
         return this.id;
     }
@@ -36,27 +39,28 @@ public class Lote {
         this.observacao = observacao;
     }
 
-    public int getId_orgaoDonatario() {
-        return this.id_orgaoDonatario;
+    // Manipulacao das outras classes
+    public OrgaoDonatario getOrgaoDonatario() {
+        return this.orgaoDonatario;
     }
 
-    public void setId_orgaoDonatario(int id_orgaoDonatario) {
-        this.id_orgaoDonatario = id_orgaoDonatario;
+    public void setOrgaoDonatario(OrgaoDonatario orgao) {
+        this.orgaoDonatario = orgao;
     }
 
-    public int getId_orgaoFiscalizador() {
-        return this.id_orgaoFiscalizador;
+    public OrgaoFiscalizador getOrgaoFiscalizador() {
+        return this.orgaoFiscalizador;
     }
 
-    public void setId_orgaoFiscalizador(int id_orgaoFiscalizador) {
-        this.id_orgaoFiscalizador = id_orgaoFiscalizador;
+    public void setOrgaoFiscalizador(OrgaoFiscalizador orgao) {
+        this.orgaoFiscalizador = orgao;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public List<Produto> getProdutosSelecionados() {
+        return produtosSelecionados;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setProdutosSelecionados(List<Produto> produtosSelecionados) {
+        this.produtosSelecionados = produtosSelecionados;
     }
 }

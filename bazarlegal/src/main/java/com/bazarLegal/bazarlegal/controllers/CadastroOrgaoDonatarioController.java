@@ -9,24 +9,26 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bazarLegal.bazarlegal.model.entidades.OrgaoFiscalizador;
+import com.bazarLegal.bazarlegal.model.entidades.OrgaoDonatario;
 import com.bazarLegal.bazarlegal.model.repositorios.RepositorioGeral;
 
+
+
 @Controller
-@RequestMapping("/CadastroOrgaoFiscalizador")
-public class CadastroOrgaoFiscalizadoresController {
+@RequestMapping("/CadastroOrgaoDonatario")
+public class CadastroOrgaoDonatarioController {
 
     @GetMapping
     public String principal(Model m) throws SQLException {
-        m.addAttribute("orgao", new OrgaoFiscalizador());
-        return "cadastro/OrgaoFiscalizador";
+        m.addAttribute("orgao", new OrgaoDonatario());
+        return "cadastro/OrgaoDonatario";
     }
-
     @PostMapping
-    public String cadastrar(@ModelAttribute("orgao") OrgaoFiscalizador orgaoFiscalizador) throws SQLException {
+    public String cadastrar(@ModelAttribute("orgao") OrgaoDonatario orgaoDonatario) throws SQLException {
         //TODO: process POST request
-        RepositorioGeral.getCurrentInstance().create(orgaoFiscalizador);
+        RepositorioGeral.getCurrentInstance().create(orgaoDonatario);
         return "redirect:/";
     }
+    
 
 }

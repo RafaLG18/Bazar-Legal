@@ -35,11 +35,11 @@ public class Produto {
     }
 
     // Getter e Setter para id_lote
-    public int getId_lote() {
+    public int getIdLote() {
         return this.id_lote;
     }
 
-    public void setId_lote(int id_lote) {
+    public void setIdLote(int id_lote) {
         this.id_lote = id_lote;
     }
 }
