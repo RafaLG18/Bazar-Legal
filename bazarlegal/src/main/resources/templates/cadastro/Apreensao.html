@@ -9,11 +9,11 @@
 <div class="container mt-5">
     <h2 class="mb-4 text-warning">Cadastrar Apreensão</h2>
 
-    <form th:action="@{/CadastroApreensao}" method="post" th:object="${lote}">
+    <form th:action="@{/CadastroDoacao}" method="post" th:object="${lote}">
         <!-- Órgão Fiscalizador -->
         <div class="mb-3">
             <label class="form-label">Quem fará a doação</label>
-            <select class="form-select" th:field="*{orgaoFiscalizador}" required>
+            <select class="form-select" th:field="*{orgaoFiscalizadorId}" required>
                 <option th:each="f : ${fiscalizadores}" th:value="${f.id}" th:text="${f.nome}"></option>
             </select>
         </div>
@@ -21,7 +21,7 @@
         <!-- Órgão Donatário -->
         <div class="mb-3">
             <label class="form-label">Quem receberá a doação</label>
-            <select class="form-select" th:field="*{orgaoDonatario}" required>
+            <select class="form-select" th:field="*{orgaoDonatarioId}" required>
                 <option th:each="d : ${donatarios}" th:value="${d.id}" th:text="${d.nome}"></option>
             </select>
         </div>
@@ -39,7 +39,7 @@
                 <div class="form-check" th:each="produto : ${produtos}">
                     <input class="form-check-input" type="checkbox"
                            th:value="${produto.codigo}"
-                           th:field="*{produtosSelecionados}" />
+                           th:field="*{produtosSelecionadosIds}" />
                     <label class="form-check-label" th:text="${produto.nome + ' - ' + produto.descricao}"></label>
                 </div>
             </div>

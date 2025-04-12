@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bazarLegal.bazarlegal.model.entidades.Lote;
 import com.bazarLegal.bazarlegal.model.entidades.Produto;
 
 public class RepositorioProduto {
@@ -22,14 +23,45 @@ public class RepositorioProduto {
         pstm.execute();
     }
 
+    public void update(Lote lote) throws SQLException{
+        List<Integer> produtosSelecionadosId=lote.getProdutosSelecionadosIds();
+        for (int produtoId : produtosSelecionadosId) {
+            this.update(lote,produtoId);
+        }        
+    }
 
-    // public void updateIdLote(Produto produto) throws SQLException{
-    //     String sql="update produto set id_lote = "+"?"+"where id ="+"?";
-    //     PreparedStatement pstm = ConnectionManager.getCurrentConnection().prepareStatement(sql);
+    public void update(Lote lote, int produtoId) throws SQLException{
+        String sql="update produto set id_lote = ? where codigo = ?";
+
+        try(PreparedStatement pstm = ConnectionManager.getCurrentConnection().prepareStatement(sql);) {
+			pstm.setInt(1, lote.getId());
+			pstm.setInt(2, produtoId);
+
+			pstm.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    // Retorno lista dos Ids de produtos relacionados ao Lote
+    public List<Integer> read(int key) throws SQLException{
+        String sql="select codigo from produto where id_lote ="+"?";
         
-	// 	pstm.setInt(1,produto.getCodigo());
-    //     pstm.setInt(2,produto.getIdLote());
-    // }
+        List<Integer> ids= new ArrayList<Integer>();
+        int id;
+
+        try(PreparedStatement pstm = ConnectionManager.getCurrentConnection().prepareStatement(sql);) {
+			pstm.setInt(1, key);
+            ResultSet query = pstm.executeQuery();
+            while (query.next()) { 
+                id=query.getInt("codigo");
+                ids.add(id);
+            }
+            return ids;
+        }
+    }
+
     public List<Produto> getAll() throws SQLException{
         List<Produto> produtos= new ArrayList<Produto>();
         String sql="select * from produto ";

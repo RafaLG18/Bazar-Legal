@@ -37,7 +37,8 @@ public class RepositorioGeral {
         this.orgF.create(org);
     }
     public void create(Lote lote) throws SQLException{
-        this.repoL.create(lote);
+        this.repoL.create(lote);       
+
     }
     public void create(Produto produto) throws SQLException{
         this.repoP.create(produto);
@@ -50,5 +51,12 @@ public class RepositorioGeral {
     }
     public List<Produto> readAllProduto() throws SQLException{
         return this.repoP.getAll();    
+    }
+    public List<Produto> readAllProdutoEscolhido(int key) throws SQLException{
+        return this.repoP.getAll(key);    
+    }
+    
+    public List<Lote> readAllLote() throws SQLException{
+        return this.repoL.getAll();    
     }
 }
